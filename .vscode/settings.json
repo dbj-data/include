@@ -1,6 +1,7 @@
 {
     "cmake.configureOnOpen": false,
     "files.associations": {
+        "*.go": "go",
         "algorithm": "cpp",
         "array": "cpp",
         "atomic": "cpp",
@@ -73,6 +74,11 @@
         "xstring": "cpp",
         "xtr1common": "cpp",
         "xtree": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "bit": "cpp",
+        "charconv": "cpp",
+        "clocale": "cpp",
+        "format": "cpp",
+        "forward_list": "cpp"
     }
 }
