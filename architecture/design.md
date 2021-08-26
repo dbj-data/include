@@ -1,5 +1,8 @@
+# This is WIP!
+
 <h1>The Design</h1>
 
+- [This is WIP!](#this-is-wip)
 - [1. Software Architecture Principles](#1-software-architecture-principles)
   - [1.1. Single OS](#11-single-os)
   - [1.2. Single API](#12-single-api)
@@ -13,9 +16,9 @@
     - [1.7.2. SEH](#172-seh)
     - [1.7.3. clang-cl](#173-clang-cl)
   - [1.8. ISO C](#18-iso-c)
-  - [1.9. Do not develop it if it exist](#19-do-not-develop-it-if-it-exist)
+  - [1.9. Do not develop it, if it exist](#19-do-not-develop-it-if-it-exist)
   - [1.10. VALSTAT](#110-valstat)
-  - [1.11. Primary Objective](#111-primary-objective)
+  - [1.11. 3 Primary Objectives](#111-3-primary-objectives)
 
 Platform is the core requirement:
 
@@ -93,24 +96,25 @@ Very fast when compiled in non C++ exceptions mode. No reason to use some other 
 
 ### 1.7.1. Be careful to avoid std lib legacy labyrinth
 
-- no <iostream>
-- no <system_error>
-- no <exception>
-- be very economical with std::string
+- no `<iostream>`
+- no `<system_error>`
+- no `<exception>`
+- be very economical with `std::string`
 - do not be afraid of mixing into your C++ code, modern ISO C features
+  - if made possible by your compiler
   - [VLA](https://gustedt.wordpress.com/2014/09/08/dont-use-fake-matrices/)
   - [compound literals](https://gustedt.wordpress.com/?s=compound+literals)
   - mature and useful numerous `__attribute__(())` extensions
 
-Avoid C++ abstractions for the sake of abstractions.  Apparently the word is now, Windows itself is developed in "C with classes" using cpp files. I think that is a "kindergarten syndrome". Very little experience and very little Architecture.
+Avoid C++ abstractions for the sake of abstractions.  Apparently the word is now (circa 2020), Windows itself is developed in "C with classes" using cpp files. I think that is a "kindergarten syndrome" of the team. Very little experience and very little Architecture.
 
-If you want to get a glimpse of what "grown ups" from MSFT think and how do they develop in C++, look up and study the [WIL](https://github.com/microsoft/wil) library. 
+If you want to get a glimpse of what "grown ups" from MSFT think and how do they develop in C++, look up and study the [WIL](https://github.com/microsoft/wil) library. Read between the lines and think what is not written in there,any why :wink:
 
 ### 1.7.2. SEH
 
 TO the surprise of many MS STL has been designed to work with no C++ exceptions too. In which case it uses SEH. That is: it raises Structured Exceptions.
 
-In the "SEH mode", MS STL compared to EASTL is it seems very fast. 
+In the "SEH mode", MS STL is it seems very fast. 
 
 ### 1.7.3. clang-cl
 
@@ -118,7 +122,7 @@ Use always. Contrary to cl.exe it allows for powerful mix and match of C11/17 an
 
 ## 1.8. ISO C
 
-## 1.9. Do not develop it if it exist
+## 1.9. Do not develop it, if it exist
 
 - if it is free and open source then generally yes but
   - that requires time for search and testing
@@ -130,6 +134,6 @@ Wherever and whenever feasible use `valstat`, call return protocol. It C++ imple
 
 Here, defined and used in the "top level" headers, aka "dbj".
 
-## 1.11. Primary Objective
+## 1.11. 3 Primary Objectives
 
 Simple Code. Readable Code. Maintainable Code.
