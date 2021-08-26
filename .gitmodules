@@ -1,15 +1,6 @@
-[submodule "dbj"]
-	path = dbj
-	url = https://github.com/dbj-data/dbj.git
-[submodule "eastl_dbj"]
-	path = eastl_dbj
-	url = https://github.com/dbj-data/EASTL2020DBJ.git
 [submodule "simplelog"]
 	path = simplelog
 	url = https://github.com/dbj-systems/dbj--simplelog.git
-[submodule "wil"]
-	path = wil
-	url = https://github.com/microsoft/wil.git
 [submodule "stb"]
 	path = stb
 	url = https://github.com/nothings/stb.git
