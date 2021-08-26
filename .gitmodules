@@ -7,3 +7,9 @@
 [submodule "ubut"]
 	path = ubut
 	url = https://github.com/dbj-data/ubut.git
+[submodule "dbj_capi"]
+	path = dbj_capi
+	url = https://github.com/dbj-data/dbj_capi.git
+[submodule "dbj_cpp"]
+	path = dbj_cpp
+	url = https://github.com/dbj-data/dbj_cpp.git
