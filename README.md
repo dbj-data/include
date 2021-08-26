@@ -1,4 +1,6 @@
-<h1> MACHINE_WIDE is W.I.P. </h1>
+> This is VS Code Multi Root Workspace
+
+<h1> W.I.P. </h1>
 
 ![jester](media/jester_box_cpp_exception.png)
 
@@ -27,9 +29,7 @@
 > 
 > Perhaps you might add it to your `/LIBPATH`. For happy Visual Studio building (clang-cl or cl) please place your lib's after the `/linker` switch.
 
-
-
-#### DBJ_MACHINE_WIDE
+#### DBJ_MACHINE_WIDE envvar
 
 - We are aiming for this to be the only user environment variable one might need to use DBJ stuff, "machine wide". 
   - Please set it now to your machine location of the "machine_wide" repo.
@@ -54,10 +54,9 @@
 
 ### Cluster of projects
 
-Wherever appropriate the Git sub-modules are used 
+Wherever appropriate the Git sub-modules are **NOT** used 
 
-1. the users/customers clone/pull all the common stuff they need in one go 
-   1. from one place on their machines or one server
+1. the users/customers have to clone/pull manually all the common stuff they need in one go 
 2. developers have a single place to manage
 
 ### The Management
