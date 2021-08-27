@@ -1,11 +1,23 @@
 
-![jester](media/jester_box_cpp_exception.png)
+![wip](media/work_in_progres_raw.jpg)
 
-> This is **NOT** VS Code Multi Root Workspace
+<h4> This is **NOT** VS Code Multi Root Workspace </h4>
 
 <h1> This readme and everything in here is: W.I.P. </h1>
-<h3> In case you especially want something from here please do mention it in issues and we might focus on your needs.</h3>
-Hint: if you are persuasive :wink:
+
+## Back to the Common Header
+
+- The common "stuff" is not repeated "all around the place", in all the "single headers"
+- Opposite to the "single header" philosophy. Here we are following the "common headers" philosophy
+- This is where "machine wide" includes are.
+
+### The Management
+
+- The development also happens in these many folders and that means a lot of cruft. Potentially.
+- Be careful not to develop in the master branch
+- Be careful to use the master branch when including
+
+In case you especially want something from here please do mention it in issues and we might focus on your needs. Hint: if you are persuasive :wink:
 
 ---
 ## DBJ_CAPI / DBJ_CPP
@@ -15,53 +27,44 @@ to have a single top and that is to be: **DBJ_CAPI** .
 
 ## For C++ Aficionados
 
-We use C++ in a non-standard form: no exceptions, no iostreams, no RTTI, no type_traits shenanigans, no meta programming and all the other C++ things you love and loathe.
+We use C++ in a non-standard form: no exceptions, no iostreams, no RTTI, no type_traits shenanigans, no `system_error`, no meta programming and all the other C++ things you love and loathe.
  
 MS STL can be built and used in a so called "kernel" mode. That is a *"big deal"*. That means non standard C++ and non standard std lib, are delivered and maintained by Microsoft.
  
 - No C++ exceptions, and no RTTI
-- "kernel" mode does not require using the cl.exe `/kernel` switch. 
+- "kernel" mode does require using the cl.exe `/kernel` switch. 
 - `CPP_UNWIND` is undefined if cl.exe switch `/DNO_EXCEPTIONS=1` is used
+  - see it in `<vcruntime.h>` in action.
 - Also keywords: `try`,`throw` and `switch` are rendered non-existent
 - [RTTI](https://docs.microsoft.com/en-us/cpp/build/reference/gr-enable-run-time-type-information?view=msvc-160) is switched off by using `/GR-` cl.exe switch
 
 ## Building 
 
-For building we use only Visual Studio as IDE and clang-cl as a compiler. 
+- For building we use most often Visual Studio as IDE and clang-cl as a compiler. 
+- When we use VS Code we prefer simple bat files for building
+  - VS Code has trouble finding and using clang-cl.exe
+
+### Linking
 
 For every "MACHINE_WIDE" stuff, if there are lib's or dll's they are in `~\MACHINE_WIDE\lib`. 
-- Perhaps you might add it to your `/LIBPATH`. For happy Visual Studio building (clang-cl or cl) please place your lib's after the `/linker` switch.
+- Perhaps you might add it to your [`/LIBPATH`](https://docs.microsoft.com/en-us/cpp/build/reference/libpath-additional-libpath?view=msvc-160). For happy Visual Studio building (clang-cl or cl) 
+  - please place your lib's after the `/linker` switch.
 
-#### DBJ_MACHINE_WIDE envvar
+### DBJ_MACHINE_WIDE envvar
 
+- Not in use
 - We are aiming for this to be the only user environment variable one might need to use DBJ stuff, "machine wide". 
-- Please set it now to your machine location of the "machine_wide" repo.
-  - ours is: `D:\\machine_wide;`
+- We will set it to the devlr machine location of the "machine_wide" repo.
+  - for example ours is: `D:\\machine_wide;`
   - Important: notice the semicolon at the end of it.
-- above is a location from our DEVL machines
+    - above is a location from our DEVL machines
     - If your machines do not have the D drive, you might use the `subst` command to "make fake" `D:` drive
       - Perfectly legal and useful.
-- Please add the `DBJ_MACHINE_WIDE` to the PATH user environment variable
+- Please add the `%DBJ_MACHINE_WIDE%` to the PATH user environment variable
 
-#### What is `<devl drive>:MACHINE_WIDE\lib;` ?
+> We use and recommend [Rapid Environment Editor](https://www.rapidee.com/en/about)
 
-- This is where libs (not source) we use are: sqlite3.dll, sqlite3.lib, etc.
-- Please add it to the `/LIBPATH` in your project setup.
-- For the DLL to be found you know it has to be on the path
-  - ditto ...
 
-## Back to the Common
-
-- Thus that is where "machine wide" includes are.
-- Opposite to the "single header" philosophy. Here we are following the "common headers" philosophy
-  - The common "stuff" is not repeated "all around the place", in all the "single headers"
-
-### The Management
-
-- The development also happens here and that means a lot of cruft. Potentially.
-
-- Be careful not to develop in the master branch
-- Be careful to use the master branch when including
 
 ---
 # APPENDIX
